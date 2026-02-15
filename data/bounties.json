@@ -1230,46 +1230,6 @@
     "attempts": 3
   },
   {
-    "bounty_name": "Reverse Lame",
-    "conditions": "Lure one of your starting boar to your opponents starting TC and win",
-    "player": "TTV.KillaTori",
-    "prize": 10,
-    "id": 124,
-    "bounty_slug": "reverse-lame",
-    "player_slug": "ttv-killatori",
-    "attempts": 0
-  },
-  {
-    "bounty_name": "Gold is Good",
-    "conditions": "Delete your starting TC in Dark Age, move it to gold, and win",
-    "player": "TTV.KillaTori",
-    "prize": 12,
-    "id": 125,
-    "bounty_slug": "gold-is-good",
-    "player_slug": "ttv-killatori",
-    "attempts": 2
-  },
-  {
-    "bounty_name": "That Rug Really ties the Room together",
-    "conditions": "Build and Maintain a continuous line of farms connecting opposing sides of the map and win",
-    "player": "TTV.KillaTori",
-    "prize": 11,
-    "id": 126,
-    "bounty_slug": "that-rug-really-ties-the-room-together",
-    "player_slug": "ttv-killatori",
-    "attempts": 1
-  },
-  {
-    "bounty_name": "True Tower Defense",
-    "conditions": "Completely surround your starting TV with a line of towers in feudal age and win",
-    "player": "TTV.KillaTori",
-    "prize": 10,
-    "id": 127,
-    "bounty_slug": "true-tower-defense",
-    "player_slug": "ttv-killatori",
-    "attempts": 0
-  },
-  {
     "bounty_name": "Public Transportation",
     "conditions": "Do a lap around the entire edge of the map with a garrisoned ram, leave one unit in each corner and win",
     "player": "Dragonlord Freya",

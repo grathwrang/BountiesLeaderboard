@@ -1438,5 +1438,35 @@
     "bounty_slug": "quartering-troops",
     "player_slug": "frozenflame1972",
     "attempts": 10
-  }
+  },
+  {
+    "bounty_name": "The Hunt is On",
+    "conditions": "Kill 5 wolves with 1 villager, it must survive, and win",
+    "player": "Kongen_42",
+    "prize": 11,
+    "id": 149,
+    "bounty_slug": "Hunt-is-on",
+    "player_slug": "Kongen-42",
+    "attempts": 1
+  },
+  {
+    "bounty_name": "Only Rams",
+    "conditions": "Win using only rams as your military",
+    "player": "De Baron",
+    "prize": 21,
+    "id": 150,
+    "bounty_slug": "only-rams",
+    "player_slug": "de-baron",
+    "attempts": 11
+  },
+  {
+    "bounty_name": "This is Fine",
+    "conditions": "At least 10 of your buildings must be on fire and win",
+    "player": "AT41",
+    "prize": 11,
+    "id": 151,
+    "bounty_slug": "this-is-fine",
+    "player_slug": "AT41",
+    "attempts": 1
+  },
 ]

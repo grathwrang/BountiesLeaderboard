@@ -1,23 +1,38 @@
-# AoE2 Bounty Leaderboard
+# AoE2 Bounty Leaderboard (Vercel)
 
-## Run locally
-From this folder:
+## Routes
+- Leaderboard: `/`
+- Admin page: `/admin`
+- API: `GET /api/bounties`, `POST /api/bounties`
+- Back-compat API alias: `POST /bounties` (rewrite to `/api/bounties`)
+
+## Local development
+This repo is configured for Vercel-style API routes.
 
 ```bash
-node server.js
+vercel dev
 ```
 
 Then open:
-- Leaderboard: `http://localhost:8080/`
-- Admin page: `http://localhost:8080/admin`
+- `http://localhost:3000/`
+- `http://localhost:3000/admin`
 
-## Admin updates
-- Submit completed bounties from `/admin`.
-- The admin form sends `POST /bounties`.
-- The backend appends the new completion to `data/bounties.json`.
+## Vercel setup (required for persistent writes)
+The API reads seed entries from `data/bounties.json` and stores newly submitted entries in Vercel KV.
 
-## Deploy
-Any host that can run a Node.js server works.
+Add these environment variables in your Vercel project:
+- `KV_REST_API_URL`
+- `KV_REST_API_TOKEN`
 
-## Data
-Bounties are stored in `data/bounties.json`.
+Without KV configured:
+- `GET /api/bounties` still works (seed JSON only)
+- `POST /api/bounties` returns an error explaining KV is required.
+
+## Quick test on deployed Vercel
+1. Open `https://<your-app>.vercel.app/admin`
+2. Submit a bounty
+3. Verify response message says saved
+4. Open `https://<your-app>.vercel.app/` and confirm the new row appears
+5. Optional API checks:
+   - `curl -sS https://<your-app>.vercel.app/api/bounties | head`
+   - `curl -sS -X POST https://<your-app>.vercel.app/api/bounties -H 'content-type: application/json' -d '{"bounty_name":"Test","player":"Tester","prize":5,"attempts":1,"conditions":"test"}'`

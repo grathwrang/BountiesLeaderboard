@@ -1,6 +1,6 @@
 async function loadData(){
-  const res = await fetch('data/bounties.json');
-  if(!res.ok) throw new Error('Could not load data/bounties.json');
+  const res = await fetch('/api/bounties');
+  if(!res.ok) throw new Error('Could not load /api/bounties');
   return await res.json();
 }
 
@@ -157,5 +157,5 @@ function wireSort(tableId){
   render();
 })().catch(err=>{
   console.error(err);
-  alert('Error loading data. Run the backend server (node server.js) and open http://localhost:8080.');
+  alert('Error loading data. Ensure the Vercel API route /api/bounties is available.');
 });

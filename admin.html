@@ -1,56 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="/favicon.png">
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Admin • AoE2 Bounty Leaderboard</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta http-equiv="refresh" content="0; url=/admin" />
+  <title>Redirecting…</title>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>AOE2 BOUNTY ADMIN</h1>
-      <p class="sub">Submit completed bounties to update the shared JSON data.</p>
-      <div class="meta"><a href="/" class="adminBack">← Back to leaderboard</a></div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <section class="card">
-      <div class="cardHead">
-        <h2>Add completed bounty</h2>
-        <div class="hint">Writes to <code>data/bounties.json</code> via <code>POST /bounties</code>.</div>
-      </div>
-      <form id="adminForm" class="adminForm">
-        <label>
-          <span>Bounty name</span>
-          <input name="bounty_name" type="text" required placeholder="Example: Boar Lure No Loom" />
-        </label>
-        <label>
-          <span>Player</span>
-          <input name="player" type="text" required placeholder="Example: Hera" />
-        </label>
-        <label>
-          <span>Prize ($)</span>
-          <input name="prize" type="number" min="0" step="1" required placeholder="100" />
-        </label>
-        <label>
-          <span>Attempts</span>
-          <input name="attempts" type="number" min="0" step="1" placeholder="Leave blank if unknown" />
-        </label>
-        <label class="fullWidth">
-          <span>Conditions</span>
-          <textarea name="conditions" rows="3" required placeholder="Describe the completion conditions"></textarea>
-        </label>
-        <div class="adminActions fullWidth">
-          <button type="submit">Add completion</button>
-          <div id="adminStatus" class="hint" role="status" aria-live="polite"></div>
-        </div>
-      </form>
-    </section>
-  </main>
-
-  <script src="admin.js"></script>
+  <p>Redirecting to <a href="/admin">/admin</a>…</p>
 </body>
 </html>

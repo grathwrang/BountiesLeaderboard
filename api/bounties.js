@@ -1,8 +1,8 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const KV_URL = process.env.KV_REST_API_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN;
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 const KV_KEY = 'aoe2:bounties:completed';
 
 async function readSeedRows(){
@@ -55,7 +55,9 @@ async function getKvRows(){
 
 async function addKvRow(row){
   if(!KV_URL || !KV_TOKEN){
-    throw new Error('Missing KV_REST_API_URL or KV_REST_API_TOKEN');
+    throw new Error(
+      'Missing KV credentials. Set KV_REST_API_URL + KV_REST_API_TOKEN (or UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN) in Vercel Project Settings → Environment Variables, then redeploy'
+    );
   }
   const encoded = encodeURIComponent(JSON.stringify(row));
   await kvRequest(`/lpush/${encodeURIComponent(KV_KEY)}/${encoded}`);

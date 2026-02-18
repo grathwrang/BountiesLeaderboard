@@ -59,7 +59,7 @@ function validate(payload){
       status.textContent = `Saved! Total completions: ${data.total}.`;
     } catch (err){
       console.error(err);
-      status.textContent = 'Request failed. Make sure backend server is running.';
+      status.textContent = 'Request failed. If deployed on Vercel, check Project Settings → Environment Variables and redeploy.';
     }
   });
 })();

@@ -1478,5 +1478,15 @@
     "bounty_slug": "the-great-caper",
     "player_slug": "djsapsan",
     "attempts": 0
+  },
+{
+    "bounty_name": "Stop Hitting Yourself",
+    "conditions": "Kill at least 50 of your own units and win",
+    "player": "Fringnut",
+    "prize": 12,
+    "id": 153,
+    "bounty_slug": "stop-hitting-yourself",
+    "player_slug": "fringnut",
+    "attempts": 1
   }
 ]

@@ -1,22 +1,12 @@
 async function loadData(){
-  const res = await fetch('data/bounties.json');
-  if(!res.ok) throw new Error('Could not load data/bounties.json');
+  const res = await fetch('/api/bounties');
+  if(!res.ok) throw new Error('Could not load /api/bounties');
   return await res.json();
 }
 
 function norm(s){ return (s||'').toString().toLowerCase().trim(); }
 
-function includesAny(hay, q){
-  if(!q) return true;
-  return hay.includes(q);
-}
-
 function money(n){ return (Number(n||0)).toFixed(0); }
-
-function prizeFmt(v){
-  const n = Number(v||0);
-  return n>0 ? ('$'+money(n)) : '(UNKNOWN)';
-}
 
 function attemptsFmt(v){
   if(v===null || v===undefined || v==='') return '(UNKNOWN)';
@@ -29,17 +19,16 @@ function makeLeaderboard(rows){
   for(const r of rows){
     const key = r.player;
     if(!byPlayer.has(key)){
-      byPlayer.set(key, { player:key, completions:0, prize:0, attempts:0, uniqueSet:new Set() });
+      byPlayer.set(key, { player:key, completions:0, prize:0, uniqueSet:new Set() });
     }
     const p = byPlayer.get(key);
     p.completions += 1;
     p.prize += Number(r.prize||0);
-    if(r.attempts!==null && r.attempts!==undefined){ p.attempts += Number(r.attempts||0); }
     p.uniqueSet.add(r.bounty_name);
   }
   const out = [];
   for(const v of byPlayer.values()){
-    out.push({ player:v.player, completions:v.completions, prize:v.prize, attempts:v.attempts, unique:v.uniqueSet.size });
+    out.push({ player:v.player, completions:v.completions, prize:v.prize, unique:v.uniqueSet.size });
   }
   return out;
 }
@@ -70,11 +59,9 @@ function sortRows(rows, key, dir){
   });
 }
 
-function applyFilters(allRows, q, onlyPrize, onlyUnknown){
+function applyFilters(allRows, q){
   const qq = norm(q);
   return allRows.filter(r=>{
-    if(onlyPrize && !(Number(r.prize||0) > 0)) return false;
-    if(onlyUnknown && norm(r.player) !== 'unknown completion') return false;
     if(!qq) return true;
     const hay = norm(r.bounty_name + ' ' + r.conditions + ' ' + r.player);
     return hay.includes(qq);
@@ -100,9 +87,8 @@ function setView(v){
 }
 
 function render(){
-  state.filteredRows = applyFilters(state.allRows, state.q, false, false);
+  state.filteredRows = applyFilters(state.allRows, state.q);
 
-  // leaderboard
   const lb = makeLeaderboard(state.filteredRows);
   const lbSorted = sortRows(lb, state.lbSort.key, state.lbSort.dir);
   renderTable(
@@ -116,7 +102,6 @@ function render(){
     ]
   );
 
-  // completions
   const compsSorted = sortRows(state.filteredRows, state.cSort.key, state.cSort.dir);
   renderTable(
     document.querySelector('#completionsTable tbody'),
@@ -125,13 +110,13 @@ function render(){
       {key:'bounty_name'},
       {key:'player'},
       {key:'prize', className:'num', fmt:(v)=>money(v)},
-      {key:'attempts', className:'num', fmt:(v)=>money(v)},
+      {key:'attempts', className:'num', fmt:(v)=>attemptsFmt(v)},
       {key:'conditions'}
     ]
   );
 }
 
-function wireSort(tableId, sortKey){
+function wireSort(tableId){
   const ths = document.querySelectorAll(`#${tableId} thead th`);
   ths.forEach(th=>{
     th.addEventListener('click', ()=>{
@@ -153,7 +138,6 @@ function wireSort(tableId, sortKey){
   const data = await loadData();
   state.allRows = data;
 
-  // meta
   const total = data.length;
   const players = new Set(data.map(r=>r.player)).size;
   const unknown = data.filter(r=>norm(r.player)==='unknown completion').length;
@@ -161,10 +145,8 @@ function wireSort(tableId, sortKey){
   document.getElementById('meta').textContent =
     `${total} completions • ${players} players • ${unknown} UNKNOWN • $${money(prizeTotal)} total prizes`;
 
-  // controls
   const q = document.getElementById('q');
   q.addEventListener('input', (e)=>{ state.q = e.target.value; render(); });
-
 
   document.getElementById('viewLeaderboard').addEventListener('click', ()=>setView('leaderboard'));
   document.getElementById('viewCompletions').addEventListener('click', ()=>setView('completions'));
@@ -175,5 +157,5 @@ function wireSort(tableId, sortKey){
   render();
 })().catch(err=>{
   console.error(err);
-  alert('Error loading data. If you opened index.html directly, use a local web server (python -m http.server).');
+  alert('Error loading data. Ensure the Vercel API route /api/bounties is available.');
 });

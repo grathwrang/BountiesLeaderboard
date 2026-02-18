@@ -1472,11 +1472,11 @@
 {
     "bounty_name": "The Great Caper",
     "conditions": "Have 75 Teutonic Knights alive at any time and win",
-    "player": "DjSapsan",
+    "player": "DJSapsan",
     "prize": 10,
     "id": 152,
     "bounty_slug": "the-great-caper",
-    "player_slug": "Djsapsan",
+    "player_slug": "DJsapsan",
     "attempts": 0
   }
 ]

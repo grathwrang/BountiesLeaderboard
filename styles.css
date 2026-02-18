@@ -21,7 +21,7 @@ h1{margin:0 0 6px;font-size:28px}
 .controls input{flex:1;min-width:260px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#0e141e;color:var(--text);outline:none}
 .controls input:focus{border-color:#3a5a86}
 .chips{display:flex;gap:8px}
-.chip{padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--text);cursor:pointer}
+.chip{padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--chip);color:var(--text);cursor:pointer;box-shadow:none}
 .chip.active{background:var(--chipA);border-color:#3a5a86}
 .toggles{display:flex;gap:14px;color:var(--muted);font-size:14px}
 .toggles input{transform:translateY(1px)}
@@ -108,4 +108,58 @@ button, .btn{
 button:hover, .btn:hover{
   transform:translateY(-1px);
   box-shadow:0 0 25px rgba(212,175,55,.45);
+}
+
+.chip,
+.chip:hover{
+  transform:none;
+}
+
+.adminForm{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(220px,1fr));
+  gap:14px;
+  padding:14px;
+}
+
+.adminForm label{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  font-size:14px;
+}
+
+.adminForm input,
+.adminForm textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.2);
+  color:var(--text);
+}
+
+.adminForm textarea{
+  resize:vertical;
+}
+
+.fullWidth{
+  grid-column:1 / -1;
+}
+
+.adminActions{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+
+.adminBack{color:var(--accent-strong);text-decoration:none}
+.adminBack:hover{text-decoration:underline}
+
+@media (max-width:700px){
+  .adminForm{
+    grid-template-columns:1fr;
+  }
 }

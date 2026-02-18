@@ -1,17 +1,23 @@
-# AoE2 Bounty Leaderboard (Static)
+# AoE2 Bounty Leaderboard
 
 ## Run locally
 From this folder:
 
-- Windows (Python installed):
-  python -m http.server 8080
+```bash
+node server.js
+```
 
-Then open: http://localhost:8080
+Then open:
+- Leaderboard: `http://localhost:8080/`
+- Admin page: `http://localhost:8080/admin`
 
-(You need a local server because the page fetches `data/bounties.json`.)
+## Admin updates
+- Submit completed bounties from `/admin`.
+- The admin form sends `POST /bounties`.
+- The backend appends the new completion to `data/bounties.json`.
 
 ## Deploy
-Any static hosting works (Vercel, GitHub Pages, Netlify).
+Any host that can run a Node.js server works.
 
 ## Data
-Edit `data/bounties.json` to add/remove completions.
+Bounties are stored in `data/bounties.json`.

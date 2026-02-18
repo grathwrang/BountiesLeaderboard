@@ -1,17 +1,100 @@
-# AoE2 Bounty Leaderboard (Static)
+# AoE2 Bounty Leaderboard (Vercel)
 
-## Run locally
-From this folder:
+## Routes
+- Leaderboard: `/`
+- Admin page: `/admin`
+- API: `GET /api/bounties`, `POST /api/bounties`
+- Back-compat API alias: `POST /bounties` (rewrite to `/api/bounties`)
 
-- Windows (Python installed):
-  python -m http.server 8080
+## Local development
+This repo is configured for Vercel-style API routes.
 
-Then open: http://localhost:8080
+```bash
+vercel dev
+```
 
-(You need a local server because the page fetches `data/bounties.json`.)
+Then open:
+- `http://localhost:3000/`
+- `http://localhost:3000/admin`
 
-## Deploy
-Any static hosting works (Vercel, GitHub Pages, Netlify).
+## Vercel setup (required for persistent writes)
+The API reads seed entries from `data/bounties.json` and stores newly submitted entries in Vercel KV/Upstash REST.
 
-## Data
-Edit `data/bounties.json` to add/remove completions.
+Add these environment variables in your Vercel project:
+- `KV_REST_API_URL`
+- `KV_REST_API_TOKEN`
+
+If you connected Upstash directly (instead of Vercel KV), these also work:
+- `UPSTASH_REDIS_REST_URL`
+- `UPSTASH_REDIS_REST_TOKEN`
+
+### Fix for this error
+If you see:
+
+`Missing KV credentials...`
+
+do this in Vercel:
+1. Project → **Storage** → create/connect **KV**.
+2. Project → **Settings** → **Environment Variables** → confirm KV vars exist for your target environment (Preview/Production).
+3. Trigger a new deploy (env vars are loaded at build/runtime; old deployments keep old env).
+4. Re-test `POST /api/bounties` from `/admin`.
+
+Without KV configured:
+- `GET /api/bounties` still works (seed JSON only)
+- `POST /api/bounties` returns an error explaining KV is required.
+
+## Quick test on deployed Vercel
+1. Open `https://<your-app>.vercel.app/admin`
+2. Submit a bounty
+3. Verify response message says saved
+4. Open `https://<your-app>.vercel.app/` and confirm the new row appears
+5. Optional API checks:
+   - `curl -sS https://<your-app>.vercel.app/api/bounties | head`
+   - `curl -sS -X POST https://<your-app>.vercel.app/api/bounties -H 'content-type: application/json' -d '{"bounty_name":"Test","player":"Tester","prize":5,"attempts":1,"conditions":"test"}'`
+
+## Correcting mistakes (manual edits)
+If you submit a typo or wrong bounty, you can manually edit the KV list entry.
+
+### Option A: Upstash/Vercel KV console (easiest)
+1. Open your KV database in Vercel/Upstash.
+2. Open the **CLI/Console** tab and inspect current rows:
+   - `LRANGE aoe2:bounties:completed 0 -1`
+3. Find the zero-based index of the bad row.
+4. Replace that row with corrected JSON:
+   - `LSET aoe2:bounties:completed <index> '{"bounty_name":"Correct Name","player":"Correct Player","prize":500,"attempts":2,"conditions":"correct text"}'`
+5. Refresh your leaderboard.
+
+To remove a bad row entirely:
+- `LREM aoe2:bounties:completed 1 '{"bounty_name":"Exact old JSON..."}'`
+
+### Option B: REST API with curl (if you have REST URL/token)
+Use your KV env vars (same values you set in Vercel):
+
+```bash
+export KV_URL="https://<your-upstash-endpoint>.upstash.io"
+export KV_TOKEN="<token>"
+
+# 1) Inspect entries
+curl -sS -H "Authorization: Bearer $KV_TOKEN" \
+  "$KV_URL/lrange/aoe2%3Abounties%3Acompleted/0/-1"
+
+# 2) Replace list item at index 3 (example)
+ENCODED=$(python - <<'PY'
+import urllib.parse, json
+row = {
+  "bounty_name": "Correct Name",
+  "player": "Correct Player",
+  "prize": 500,
+  "attempts": 2,
+  "conditions": "correct text"
+}
+print(urllib.parse.quote(json.dumps(row), safe=''))
+PY
+)
+
+curl -sS -X POST -H "Authorization: Bearer $KV_TOKEN" \
+  "$KV_URL/lset/aoe2%3Abounties%3Acompleted/3/$ENCODED"
+```
+
+### Important note
+- Seed rows from `data/bounties.json` are still included in API responses. If the wrong row is in the seed file, fix `data/bounties.json` in Git and redeploy.

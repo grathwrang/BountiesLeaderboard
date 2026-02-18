@@ -1105,7 +1105,7 @@
     "player": "Time2think",
     "prize": 20,
     "id": 111,
-    "bounty_slug": "never-go-full-petard",
+    "bounty_slug": "never-go-full-petard2",
     "player_slug": "time2think",
     "attempts": null
   },
@@ -1265,7 +1265,7 @@
     "player": "Dragonlord Freya",
     "prize": 12,
     "id": 131,
-    "bounty_slug": "o-christmas-tree",
+    "bounty_slug": "o-christmas-tree2",
     "player_slug": "dragonlord-freya",
     "attempts": 2
   },
@@ -1275,7 +1275,7 @@
     "player": "RedNeal",
     "prize": 16,
     "id": 132,
-    "bounty_slug": "santa-s-workshops",
+    "bounty_slug": "santa-s-workshops2",
     "player_slug": "redneal",
     "attempts": 6
   },

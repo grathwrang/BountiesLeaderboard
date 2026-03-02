@@ -1432,11 +1432,11 @@
   {
     "bounty_name": "Quartering Troops",
     "conditions": "All new houses must connect directly to a military building after 6 villagers and win",
-    "player": "FrozenFlame1972",
+    "player": "FrozenFlame",
     "prize": 20,
     "id": 148,
     "bounty_slug": "quartering-troops",
-    "player_slug": "frozenflame1972",
+    "player_slug": "frozenflame",
     "attempts": 10
   },
   {
@@ -1488,5 +1488,15 @@
     "bounty_slug": "stop-hitting-yourself",
     "player_slug": "fringnut",
     "attempts": 2
+  },
+{
+    "bounty_name": "No Khmercy 2",
+    "conditions": "Produce only Ballista elephants and win",
+    "player": "FrozenFlame",
+    "prize": 17,
+    "id": 154,
+    "bounty_slug": "no-khmercy-two",
+    "player_slug": "frozenflame",
+    "attempts": 7
   }
 ]

@@ -105,10 +105,13 @@ function render(){
   // leaderboard
   const lb = makeLeaderboard(state.filteredRows);
   const lbSorted = sortRows(lb, state.lbSort.key, state.lbSort.dir);
+  const lbWithRank = lbSorted.map((row, index) => ({...row, rank: index + 1}));
+  
   renderTable(
     document.querySelector('#leaderboardTable tbody'),
     lbSorted,
     [
+      {key:'rank', className:'num'},
       {key:'player'},
       {key:'completions', className:'num'},
       {key:'unique', className:'num'},

@@ -109,7 +109,7 @@ function render(){
   
   renderTable(
     document.querySelector('#leaderboardTable tbody'),
-    lbSorted,
+    lbWithRank,
     [
       {key:'rank', className:'num'},
       {key:'player'},
@@ -127,8 +127,8 @@ function render(){
     [
       {key:'bounty_name'},
       {key:'player'},
-      {key:'prize', className:'num', fmt:(v)=>money(v)},
-      {key:'attempts', className:'num', fmt:(v)=>money(v)},
+      {key:'prize', className:'num', fmt:(v)=>prizeFmt(v)},
+      {key:'attempts', className:'num', fmt:(v)=>attemptsFmt(v)},
       {key:'conditions'}
     ]
   );

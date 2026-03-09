@@ -1499,4 +1499,14 @@
     "player_slug": "frozenflame",
     "attempts": 7
   }
+  {
+    "bounty_name": "Wrong Type of Settlement",
+    "conditions": "Build 10 settlements in line of sight of the opponents buildings (the settlements must survive) and win",
+    "player": "AT41",
+    "prize": 13,
+    "id": 155,
+    "bounty_slug": "wrong-type-of-settlement",
+    "player_slug": "at41",
+    "attempts": 3
+  },
 ]

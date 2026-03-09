@@ -1498,7 +1498,7 @@
     "bounty_slug": "no-khmercy-two",
     "player_slug": "frozenflame",
     "attempts": 7
-  }
+  },
   {
     "bounty_name": "Wrong Type of Settlement",
     "conditions": "Build 10 settlements in line of sight of the opponents buildings (the settlements must survive) and win",
@@ -1508,5 +1508,5 @@
     "bounty_slug": "wrong-type-of-settlement",
     "player_slug": "at41",
     "attempts": 3
-  },
+  }
 ]

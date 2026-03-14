@@ -1508,5 +1508,15 @@
     "bounty_slug": "wrong-type-of-settlement",
     "player_slug": "at41",
     "attempts": 3
+  },
+  {
+    "bounty_name": "La Composition Merdique",
+    "conditions": "Produce only spears as the Franks (no Feudal towers) and win",
+    "player": "DJSapsan",
+    "prize": 34,
+    "id": 156,
+    "bounty_slug": "la-composition-merdique",
+    "player_slug": "djsapsan",
+    "attempts": 34
   }
 ]

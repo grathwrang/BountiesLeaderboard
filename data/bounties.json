@@ -1518,5 +1518,15 @@
     "bounty_slug": "la-composition-merdique",
     "player_slug": "djsapsan",
     "attempts": 34
+  },
+    {
+    "bounty_name": "That Rug Really Ties the Room Together",
+    "conditions": "Build and maintain a continuous line of farms connecting opposing sides of the map and win",
+    "player": "Dragonlord Freya",
+    "prize": 18,
+    "id": 157,
+    "bounty_slug": "that-rug-really-ties-the-room-together",
+    "player_slug": "Dragonlord Freya",
+    "attempts": 18
   }
 ]

@@ -1517,7 +1517,7 @@
     "id": 156,
     "bounty_slug": "la-composition-merdique",
     "player_slug": "djsapsan",
-    "attempts": 34
+    "attempts": 24
   },
     {
     "bounty_name": "That Rug Really Ties the Room Together",
@@ -1527,6 +1527,16 @@
     "id": 157,
     "bounty_slug": "that-rug-really-ties-the-room-together",
     "player_slug": "Dragonlord Freya",
-    "attempts": 18
+    "attempts": 8
+  },
+    {
+    "bounty_name": "Siege Is Stupid",
+    "conditions": "Destroy 10 buildings using only Saracen Archers",
+    "player": "DJSapsan",
+    "prize": 19,
+    "id": 158,
+    "bounty_slug": "siege-is-stupid",
+    "player_slug": "djsapsan",
+    "attempts": 9
   }
 ]

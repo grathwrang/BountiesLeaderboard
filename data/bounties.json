@@ -1538,5 +1538,35 @@
     "bounty_slug": "siege-is-stupid",
     "player_slug": "djsapsan",
     "attempts": 9
+  },
+      {
+    "bounty_name": "Wololoverload",
+    "conditions": "Produce only monks and villagers and win",
+    "player": "maxymczech",
+    "prize": 24,
+    "id": 159,
+    "bounty_slug": "wololoverload",
+    "player_slug": "maxymczech",
+    "attempts": 14
+  },
+      {
+    "bounty_name": "Twenty Towers",
+    "conditions": "Build 20 towers before Castle Age and win",
+    "player": "De Baron",
+    "prize": 23,
+    "id": 160,
+    "bounty_slug": "twenty-towers",
+    "player_slug": "De Baron",
+    "attempts": 13
+  },
+      {
+    "bounty_name": "Stupid Champi Rush",
+    "conditions": "Produce 100 Champis in Dark Age and win",
+    "player": "Icylionheart",
+    "prize": 23,
+    "id": 161,
+    "bounty_slug": "stupid-champi-rush",
+    "player_slug": "icylionheart",
+    "attempts": 13
   }
 ]

@@ -1568,5 +1568,15 @@
     "bounty_slug": "stupid-champi-rush",
     "player_slug": "icylionheart",
     "attempts": 13
+  },
+       {
+    "bounty_name": "We Have Siege At Home",
+    "conditions": "Destroy the opponents starting TC using only petards and win",
+    "player": "Vertical Vertigo",
+    "prize": 11,
+    "id": 162,
+    "bounty_slug": "we-have-siege-at-home",
+    "player_slug": "vertical-vertigo",
+    "attempts": 1
   }
 ]

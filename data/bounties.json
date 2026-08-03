@@ -1578,5 +1578,15 @@
     "bounty_slug": "we-have-siege-at-home",
     "player_slug": "vertical-vertigo",
     "attempts": 1
+  },
+        {
+    "bounty_name": "Corner Castles",
+    "conditions": "Build a Castle in each of the exact 4 corners of the map (they must survive) and win",
+    "player": "Burgoman2",
+    "prize": 11,
+    "id": 163,
+    "bounty_slug": "corner-castles",
+    "player_slug": "burgoman2",
+    "attempts": 1
   }
 ]

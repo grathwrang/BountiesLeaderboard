@@ -1588,5 +1588,15 @@
     "bounty_slug": "corner-castles",
     "player_slug": "burgoman2",
     "attempts": 1
+  },
+         {
+    "bounty_name": "A Barrel of Scorpions 3",
+    "conditions": "Destroy the opponents starting TC using only scorpions and win",
+    "player": "De Baron",
+    "prize": 13,
+    "id": 164,
+    "bounty_slug": "a-barrel-of-scorpions-3",
+    "player_slug": "de-baron",
+    "attempts": 3
   }
 ]
